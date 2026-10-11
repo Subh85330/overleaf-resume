@@ -1,0 +1,20 @@
+name: Sync Resume From Overleaf
+
+permissions:
+  contents: write
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Subh85330/overleaf-resume@v2
+        with:
+          overleaf_url: 'https://www.overleaf.com/read/czdjsmmvmfgd#294de7'
+          # overleaf_url: ${{ vars.OVERLEAF_URL }}
+
+          # Optional
+          gdrive_link: ${{ vars.GDRIVE_LINK }}
+          gdrive_service_account_key: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_KEY }}

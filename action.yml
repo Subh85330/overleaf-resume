@@ -34,7 +34,15 @@ runs:
 
     - name: Copy requirements.txt
       shell: bash
-      run: cp "$GITHUB_ACTION_PATH/requirements.txt" "$GITHUB_WORKSPACE/requirements.txt"
+      run: |
+        src="$GITHUB_ACTION_PATH/requirements.txt"
+        dest="$GITHUB_WORKSPACE/requirements.txt"
+
+        if [[ "$src" != "$dest" ]]; then
+          cp "$src" "$dest"
+        else
+          echo "requirements.txt already present in workspace; skipping copy"
+        fi
 
     - name: Set up Python
       uses: actions/setup-python@v7

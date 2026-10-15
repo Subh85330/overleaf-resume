@@ -128,11 +128,11 @@ except Exception as e:
 
 changes_detected = save_latex_if_updated(latex, 'resume.tex')
 
-if not changes_detected:
-    logger.notice('No changes detected ✅️')
-    logger.set_output("skip", "True")
+# if not changes_detected:
+#     logger.notice('No changes detected ✅️')
+#     logger.set_output("skip", "True")
 
-    sys.exit(0)
+#     sys.exit(0)
 
 browser.download_pdf()
 
